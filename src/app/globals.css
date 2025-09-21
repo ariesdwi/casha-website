@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ========= Casha Green Theme ========= */
+:root {
+  --casha-primary: #2E7D32;      /* Professional green */
+  --casha-primary-dark: #1B5E20; /* Darker green */
+  --casha-primary-light: #4CAF50; /* Lighter green */
+  --casha-accent: #689F38;       /* Complementary green */
+  --casha-background: #f8fbf8;
+  --casha-text-primary: #1a1f1a;
+  --casha-text-secondary: #5a6d5a;
+  --casha-card: #f1f8f1;
+  --casha-border: #e0ede0;
+}
+
+@theme inline {
+  --color-casha-primary: var(--casha-primary);
+  --color-casha-primary-dark: var(--casha-primary-dark);
+  --color-casha-primary-light: var(--casha-primary-light);
+  --color-casha-accent: var(--casha-accent);
+  --color-casha-background: var(--casha-background);
+  --color-casha-text-primary: var(--casha-text-primary);
+  --color-casha-text-secondary: var(--casha-text-secondary);
+  --color-casha-card: var(--casha-card);
+  --color-casha-border: var(--casha-border);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --casha-background: #0d130d;
+    --casha-text-primary: #e6efe6;
+    --casha-text-secondary: #a2b8a2;
+    --casha-card: #1a231a;
+    --casha-border: #2d3b2d;
+  }
+}
+
+/* ========= Base Styles ========= */
+body {
+  background: var(--casha-background);
+  color: var(--casha-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* ========= Reusable Utilities ========= */
+.btn {
+  @apply inline-block px-6 py-3 rounded-lg font-semibold text-white shadow-md transition-all duration-300;
+  background-color: var(--casha-primary);
+}
+.btn:hover {
+  background-color: var(--casha-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.2);
+}
+.btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-300 border;
+  background-color: transparent;
+  color: var(--casha-primary);
+  border-color: var(--casha-primary);
+}
+.btn-secondary:hover {
+  background-color: var(--casha-primary);
+  color: white;
+}
+
+.card {
+  @apply rounded-xl shadow p-6 transition-all duration-300;
+  background-color: var(--casha-card);
+  border: 1px solid var(--casha-border);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ========= Custom Components ========= */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--casha-primary-light) 0%, var(--casha-primary) 100%);
+}
+
+.feature-icon {
+  @apply w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6;
+  background-color: rgba(46, 125, 50, 0.1);
+}
+.feature-icon svg {
+  color: var(--casha-primary);
+}
+
+.timeline-dot {
+  @apply w-8 h-8 rounded-full border-4 relative z-10;
+  background-color: var(--casha-primary);
+  border-color: var(--casha-background);
+}
+
+/* ========= Animations ========= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ========= Financial Elements ========= */
+.financial-graph {
+  background: linear-gradient(180deg, var(--casha-primary-light) 0%, transparent 100%);
+  opacity: 0.7;
+}
+
+/* ========= Typography ========= */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--casha-primary) 0%, var(--casha-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
