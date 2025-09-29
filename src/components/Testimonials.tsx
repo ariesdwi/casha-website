@@ -176,7 +176,7 @@ export default function Testimonials() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
           <div>
             <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">5M+</div>
             <div className="text-green-700">Active Users</div>
@@ -193,7 +193,8 @@ export default function Testimonials() {
             <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">150+</div>
             <div className="text-green-700">Countries</div>
           </div>
-        </div>
+        </div> */}
+
       </div>
     </section>
   );

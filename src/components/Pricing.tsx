@@ -35,7 +35,7 @@ const plans = [
   },
   {
     name: "Premium One-Time",
-    price: "$29.99",
+    price: "$99",
     period: "one-time",
     description: "Unlock all features forever with a single payment",
     features: [

@@ -51,13 +51,14 @@ export default function Hero() {
               </div>
             </button>
             
-            <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-colors duration-300">
+            {/* <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-colors duration-300">
               <Download className="w-5 h-5" />
               <div className="text-left">
                 <div className="text-xs">Get it on</div>
                 <div className="font-semibold">Google Play</div>
               </div>
-            </button>
+            </button> */}
+
           </div>
 
           {/* Hero Image/Preview */}

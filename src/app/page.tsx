@@ -10,11 +10,11 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <Features />
+      {/* <Features /> */}
       <Pricing />
       <Testimonials />
-      <About />
-      <CTASection />
+      {/* <About />
+      <CTASection /> */}
       <Footer />
     </main>
   );
