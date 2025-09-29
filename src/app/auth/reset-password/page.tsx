@@ -1,9 +1,11 @@
-'use client'
+"use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 
-export default function ResetPasswordPage() {
+// 🔹 Extract the actual form into its own component
+function ResetPasswordForm() {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
   const [password, setPassword] = useState("")
@@ -28,7 +30,7 @@ export default function ResetPasswordPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             token,
-            newPassword: password, // ✅ must match backend
+            newPassword: password,
           }),
         }
       )
@@ -48,89 +50,98 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50 p-6">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-green-100">
-        <h1 className="text-2xl font-extrabold text-green-900 text-center mb-6">
+    <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-green-100">
+      <h1 className="text-2xl font-extrabold text-green-900 text-center mb-6">
+        Reset Password
+      </h1>
+
+      <form onSubmit={handleSubmit} className="space-y-5">
+        {/* New Password */}
+        <div>
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-green-700 mb-1"
+          >
+            New Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+            required
+          />
+        </div>
+
+        {/* Confirm Password */}
+        <div>
+          <label
+            htmlFor="confirm"
+            className="block text-sm font-medium text-green-700 mb-1"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirm"
+            value={confirm}
+            onChange={(e) => setConfirm(e.target.value)}
+            className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+            required
+          />
+        </div>
+
+        {/* Message */}
+        {message && (
+          <div
+            className={`p-3 rounded-lg text-sm font-medium ${
+              status === "success"
+                ? "bg-green-50 text-green-700 border border-green-200"
+                : "bg-red-50 text-red-700 border border-red-200"
+            }`}
+          >
+            {message}
+          </div>
+        )}
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition duration-300 focus:ring-2 focus:ring-green-400 focus:outline-none"
+        >
           Reset Password
-        </h1>
+        </button>
+      </form>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* New Password */}
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-green-700 mb-1"
-            >
-              New Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-              required
-            />
-          </div>
-
-          {/* Confirm Password */}
-          <div>
-            <label
-              htmlFor="confirm"
-              className="block text-sm font-medium text-green-700 mb-1"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirm"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-              required
-            />
-          </div>
-
-          {/* Message */}
-          {message && (
-            <div
-              className={`p-3 rounded-lg text-sm font-medium ${
-                status === "success"
-                  ? "bg-green-50 text-green-700 border border-green-200"
-                  : "bg-red-50 text-red-700 border border-red-200"
-              }`}
-            >
-              {message}
-            </div>
-          )}
-
-          {/* Submit */}
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition duration-300 focus:ring-2 focus:ring-green-400 focus:outline-none"
+      {/* Links */}
+      <div className="mt-6 text-center space-y-2">
+        <Link
+          href="/auth/login"
+          className="text-green-600 hover:text-green-800 hover:underline text-sm font-medium transition-colors"
+        >
+          Back to Login
+        </Link>
+        <div>
+          <Link
+            href="/support"
+            className="text-green-700 hover:text-green-900 text-sm transition-colors"
           >
-            Reset Password
-          </button>
-        </form>
-
-        {/* Links */}
-        <div className="mt-6 text-center space-y-2">
-          <a
-            href="/auth/login"
-            className="text-green-600 hover:text-green-800 hover:underline text-sm font-medium transition-colors"
-          >
-            Back to Login
-          </a>
-          <div>
-            <a
-              href="/support"
-              className="text-green-700 hover:text-green-900 text-sm transition-colors"
-            >
-              Need help? Contact Support
-            </a>
-          </div>
+            Need help? Contact Support
+          </Link>
         </div>
       </div>
+    </div>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50 p-6">
+      {/* ✅ Suspense wrapper fixes the build error */}
+      <Suspense fallback={<div>Loading form...</div>}>
+        <ResetPasswordForm />
+      </Suspense>
     </main>
   )
 }
