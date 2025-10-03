@@ -18,7 +18,7 @@ const plans = [
   },
   {
     name: "Premium Monthly",
-    price: "$4.99",
+    price: "$2.2",
     period: "per month",
     description: "Unlock full features for smarter financial management",
     features: [
@@ -35,7 +35,7 @@ const plans = [
   },
   {
     name: "Premium One-Time",
-    price: "$99",
+    price: "$20",
     period: "one-time",
     description: "Unlock all features forever with a single payment",
     features: [
@@ -50,7 +50,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
+    <section id="pricing" className="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
