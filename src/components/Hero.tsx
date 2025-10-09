@@ -217,7 +217,7 @@ export default function Hero() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Chat-Style Input</h3>
               <p className="text-gray-600 leading-relaxed">
-                Type transactions naturally like you're chatting. &quot;Lunch with Sarah $25&quot; becomes a categorized expense instantly.
+                Type transactions naturally like you&aposre chatting. &quot;Lunch with Sarah $25&quot; becomes a categorized expense instantly.
               </p>
             </div>
             
