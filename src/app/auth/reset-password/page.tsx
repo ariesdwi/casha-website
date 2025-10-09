@@ -145,12 +145,12 @@ function ResetPasswordForm() {
           Back to Login
         </Link>
         <div>
-          <Link
+          {/* <Link
             href="/support"
             className="text-green-700 hover:text-green-900 text-sm transition-colors"
           >
             Need help? Contact Support
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
