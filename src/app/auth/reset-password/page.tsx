@@ -3,13 +3,15 @@
 import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { Eye, EyeOff } from "lucide-react" // 👈 Install lucide-react if not yet
 
-// 🔹 Extract the actual form into its own component
 function ResetPasswordForm() {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
   const [password, setPassword] = useState("")
   const [confirm, setConfirm] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const [message, setMessage] = useState("")
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
 
@@ -64,14 +66,24 @@ function ResetPasswordForm() {
           >
             New Password
           </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-            required
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 pr-10 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute inset-y-0 right-3 flex items-center text-green-500 hover:text-green-700"
+              aria-label="Toggle password visibility"
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
         </div>
 
         {/* Confirm Password */}
@@ -82,14 +94,24 @@ function ResetPasswordForm() {
           >
             Confirm Password
           </label>
-          <input
-            type="password"
-            id="confirm"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-            className="w-full px-4 py-2 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-            required
-          />
+          <div className="relative">
+            <input
+              type={showConfirm ? "text" : "password"}
+              id="confirm"
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+              className="w-full px-4 py-2 pr-10 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirm((prev) => !prev)}
+              className="absolute inset-y-0 right-3 flex items-center text-green-500 hover:text-green-700"
+              aria-label="Toggle confirm password visibility"
+            >
+              {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
         </div>
 
         {/* Message */}
@@ -138,7 +160,6 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50 p-6">
-      {/* ✅ Suspense wrapper fixes the build error */}
       <Suspense fallback={<div>Loading form...</div>}>
         <ResetPasswordForm />
       </Suspense>

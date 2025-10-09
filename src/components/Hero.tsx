@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Play, Download, Star } from "lucide-react";
+import { Play, Download, Star, X } from "lucide-react";
 import Image from "next/image";
 
 // Import your screenshots
@@ -60,8 +60,12 @@ export default function Hero() {
     }
   ];
 
+  // YouTube video ID extracted from the URL
+  const youtubeVideoId = "pVO5JuFUmlI";
+  const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`;
+
   return (
-    <section  className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 pt-20 pb-16">
+    <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 pt-20 pb-16">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -99,7 +103,7 @@ export default function Hero() {
               
               <button 
                 onClick={() => setIsPlaying(true)}
-                className="flex items-center justify-center text-gray-700 hover:text-green-600 px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 border-2 border-gray-300 hover:border-green-600 hover:bg-green-50"
+                className="flex items-center justify-center text-gray-700 hover:text-green-600 px-8 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 border-2 border-gray-300 hover:border-green-600 hover:bg-green-50 transform hover:scale-105"
               >
                 <Play className="w-5 h-5 mr-2" />
                 Watch Demo
@@ -146,7 +150,7 @@ export default function Hero() {
             </div>
 
             {/* Horizontal Screenshots Grid */}
-            <div  className="flex justify-center">
+            <div className="flex justify-center">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl">
                 {features.map((feature, index) => (
                   <button
@@ -213,7 +217,7 @@ export default function Hero() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Chat-Style Input</h3>
               <p className="text-gray-600 leading-relaxed">
-                Type transactions naturally like you ere chatting. &quot;Lunch with Sarah $25&quot; becomes a categorized expense instantly.
+                Type transactions naturally like you're chatting. &quot;Lunch with Sarah $25&quot; becomes a categorized expense instantly.
               </p>
             </div>
             
@@ -242,18 +246,37 @@ export default function Hero() {
 
       {/* Video Modal */}
       {isPlaying && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-6 max-w-4xl w-full mx-4">
-            <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-600">Video demo would play here</p>
-            </div>
-            <div className="flex justify-end mt-4">
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h3 className="text-lg font-semibold text-gray-900">Casha App Demo</h3>
               <button 
                 onClick={() => setIsPlaying(false)}
-                className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors"
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
-                Close
+                <X className="w-6 h-6" />
               </button>
+            </div>
+            
+            <div className="aspect-video bg-black">
+              <iframe
+                src={youtubeEmbedUrl}
+                title="Casha App Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            
+            <div className="p-4 border-t">
+              <div className="flex justify-end">
+                <button 
+                  onClick={() => setIsPlaying(false)}
+                  className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
