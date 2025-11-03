@@ -1,6 +1,5 @@
-
-
-import { Facebook, Twitter, Instagram, Linkedin, Heart } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -11,34 +10,47 @@ export default function Footer() {
             Casha
           </h3>
           
-          {/* <p className="text-green-200 text-lg leading-relaxed mb-6 max-w-md">
+          <p className="text-green-200 text-lg leading-relaxed mb-6 max-w-md">
             Take control of your financial life and achieve your money goals with our smart finance solutions.
-          </p> */}
+          </p>
+          
           <div className="flex gap-4">
-            <div className="p-3 bg-green-800 hover:bg-green-700 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg">
-              <Facebook className="w-5 h-5 text-green-200" />
-            </div>
-            <div className="p-3 bg-green-800 hover:bg-green-700 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg">
-              <Twitter className="w-5 h-5 text-green-200" />
-            </div>
-            <div className="p-3 bg-green-800 hover:bg-green-700 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <a 
+              href="https://www.instagram.com/cashaapps?igsh=M2dva2UyY3ExM3F4&utm_source=qr" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 bg-green-800 hover:bg-green-700 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              aria-label="Instagram"
+            >
               <Instagram className="w-5 h-5 text-green-200" />
-            </div>
-            <div className="p-3 bg-green-800 hover:bg-green-700 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg">
-              <Linkedin className="w-5 h-5 text-green-200" />
-            </div>
+            </a>
           </div>
         </div>
         
         <div className="border-t border-green-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-green-300 text-sm flex items-center gap-1">
-              © 2025 Casha.
+              © 2025 Casha - PT Casha. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-green-300 hover:text-white transition-colors duration-200">Privacy Policy</a>
-              <a href="#" className="text-green-300 hover:text-white transition-colors duration-200">Terms of Service</a>
-              <a href="#" className="text-green-300 hover:text-white transition-colors duration-200">Cookie Policy</a>
+              <Link 
+                href="/privacy" 
+                className="text-green-300 hover:text-white transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/terms" 
+                className="text-green-300 hover:text-white transition-colors duration-200"
+              >
+                Terms of Service
+              </Link>
+              {/* <a 
+                href="mailto:support@casha.com" 
+                className="text-green-300 hover:text-white transition-colors duration-200"
+              >
+                Contact
+              </a> */}
             </div>
           </div>
         </div>
