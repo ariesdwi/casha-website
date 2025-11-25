@@ -51,7 +51,7 @@ export default function Header() {
               Pricing
             </Link>
             <a 
-              href="https://apps.apple.com/app/casha-your-finance-companion"
+              href="https://apps.apple.com/id/app/cashaapp/id6754607757"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 shadow-md"
