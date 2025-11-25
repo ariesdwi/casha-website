@@ -89,7 +89,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <a 
-                href="https://apps.apple.com/app/casha-your-finance-companion"
+                href="https://apps.apple.com/id/app/cashaapp/id6754607757"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center gap-3 transition-all duration-300 transform hover:scale-105 shadow-lg"
