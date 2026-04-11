@@ -48,6 +48,21 @@ export default function CTASection() {
                   <div className="font-semibold text-lg">App Store</div>
                 </div>
               </a>
+
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.casha.app&hl=id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.18 23.76c.37.21.8.22 1.18.02l12.93-7.46-2.79-2.79-11.32 10.23zM.54 1.07C.2 1.46 0 2.04 0 2.79v18.42c0 .75.2 1.33.55 1.72l.09.08 10.32-10.33v-.24L.63.99.54 1.07zM20.67 10.4l-2.76-1.6-3.11 3.11 3.11 3.11 2.78-1.6c.79-.46.79-1.57-.02-2.02zM4.36.22L17.29 7.68l-2.79 2.79L3.18.24C3.56.04 3.99.05 4.36.22z"/>
+                </svg>
+                <div className="text-left leading-tight">
+                  <div className="text-xs opacity-90">Get it on</div>
+                  <div className="font-semibold text-lg">Google Play</div>
+                </div>
+              </a>
             </div>
           </div>
           

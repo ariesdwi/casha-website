@@ -2,49 +2,64 @@ import { Check, Crown, Star } from "lucide-react";
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Get started with essential money tracking tools",
+    name: "Weekly",
+    price: "Rp 9.000",
+    period: "per minggu",
+    description: "Komitmen paling rendah. Cocok untuk mencoba Casha.",
     features: [
-      "Set 1 budget",
-      "View weekly, monthly & yearly reports",
-      "Track total spending per category",
-      "Take photos of receipts",
-      "Community support"
+      "Akses semua fitur Premium",
+      "Tidak ada iklan",
+      "Bayar setiap minggu",
+      "Bisa berhenti kapan saja"
     ],
-    cta: "Get Started",
-    popular: false
+    cta: "Mulai Mingguan",
+    popular: false,
+    badge: null
   },
   {
-    name: "Premium Monthly",
-    price: "$2.2",
-    period: "per month",
-    description: "Unlock full features for smarter financial management",
+    name: "Monthly",
+    price: "Rp 29.000",
+    period: "per bulan",
+    description: "Cocok untuk mencoba fitur sebelum komitmen panjang.",
     features: [
-      "Unlimited budgets",
-      "Weekly, monthly & yearly reports",
-      "Track total spending per category",
-      "Take photos of receipts",
-      "AI-assisted transaction insights",
-      "Ad-free experience",
-      "Priority support"
+      "Akses semua fitur Premium",
+      "Tidak ada iklan",
+      "Bayar setiap bulan",
+      "Bisa berhenti kapan saja"
     ],
-    cta: "Subscribe Monthly",
-    popular: true
+    cta: "Mulai Bulanan",
+    popular: false,
+    badge: null
   },
   {
-    name: "Premium One-Time",
-    price: "$20",
-    period: "one-time",
-    description: "Unlock all features forever with a single payment",
+    name: "Yearly",
+    price: "Rp 349.000",
+    period: "per tahun",
+    description: "Hemat 80% dibanding harga bulanan — sekitar Rp 29rb/bulan.",
     features: [
-      "All Premium Monthly features",
-      "Lifetime access",
-      "All future updates included"
+      "Akses semua fitur Premium",
+      "Tidak ada iklan",
+      "Hemat 80% vs bulanan",
+      "Bayar setahun sekali"
     ],
-    cta: "Unlock Forever",
-    popular: false
+    cta: "Mulai Tahunan",
+    popular: true,
+    badge: "Paling Populer"
+  },
+  {
+    name: "Lifetime",
+    price: "Rp 999.000",
+    period: "sekali bayar",
+    description: "Bayar sekali, akses selamanya. Paling hemat jangka panjang.",
+    features: [
+      "Akses semua fitur Premium",
+      "Tidak ada iklan",
+      "Semua update di masa depan",
+      "Akses seumur hidup"
+    ],
+    cta: "Beli Selamanya",
+    popular: false,
+    badge: "Terbaik Jangka Panjang"
   }
 ];
 
@@ -57,11 +72,11 @@ export default function Pricing() {
             Choose Your Perfect Plan
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Start free or upgrade to Premium to unlock smarter money tracking, AI insights, and full control over your finances.
+            Pilih paket yang paling sesuai untukmu. Mulai dari mingguan hingga seumur hidup — semua akses fitur Premium.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -73,9 +88,18 @@ export default function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 px-6 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                  <div className="bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 px-6 py-2 rounded-full flex items-center gap-2 shadow-lg whitespace-nowrap">
                     <Crown className="w-4 h-4" />
-                    <span className="text-sm font-semibold">Most Popular</span>
+                    <span className="text-sm font-semibold">{plan.badge}</span>
+                  </div>
+                </div>
+              )}
+
+              {plan.badge && !plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-2 rounded-full flex items-center gap-2 shadow-lg whitespace-nowrap">
+                    <Star className="w-4 h-4" />
+                    <span className="text-sm font-semibold">{plan.badge}</span>
                   </div>
                 </div>
               )}
@@ -125,8 +149,8 @@ export default function Pricing() {
 
         <div className="mt-16 text-center">
           <p className="text-gray-600">
-            All plans include secure data encryption and regular backups. 
-            <span className="text-green-600 font-medium"> 30-day money-back guarantee</span> on Premium plans.
+            Semua paket mencakup enkripsi data yang aman dan backup rutin.
+            <span className="text-green-600 font-medium"> Berhenti berlangganan kapan saja</span> untuk paket mingguan, bulanan, dan tahunan.
           </p>
         </div>
       </div>

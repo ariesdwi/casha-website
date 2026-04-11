@@ -10,6 +10,10 @@ import screenshot3 from "../app/assets/images/3.png";
 import screenshot4 from "../app/assets/images/4.png";
 import screenshot5 from "../app/assets/images/5.png";
 import screenshot6 from "../app/assets/images/6.png";
+import screenshot7 from "../app/assets/images/7.png";
+import screenshot8 from "../app/assets/images/8.png";
+import screenshot9 from "../app/assets/images/9.png";
+import screenshot10 from "../app/assets/images/10.png";
 
 export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,56 +22,77 @@ export default function Hero() {
   const features = [
     { 
       src: screenshot1, 
+      alt: "Dashboard", 
+      title: "Dashboard",
+      description: "Get a complete overview of your financial health — income, expenses, debts, and assets all in one beautiful screen.",
+      icon: "🏠"
+    },
+    { 
+      src: screenshot2, 
       alt: "AI Chat Input", 
       title: "AI Chat Input",
       description: "Add transactions by typing naturally or scanning receipts. 'Makan siang 45rb' gets parsed instantly.",
       icon: "💬"
     },
     { 
-      src: screenshot2, 
-      alt: "Expense Tracking", 
-      title: "Expense Tracking",
-      description: "Track every rupiah you spend. Intelligent algorithms categorize everything automatically.",
-      icon: "💸"
-    },
-    { 
       src: screenshot3, 
-      alt: "Income Management", 
-      title: "Income Tracking",
-      description: "Track salary, freelance work, business revenues, and investment income streams natively.",
-      icon: "💰"
+      alt: "Report Page", 
+      title: "Reports",
+      description: "Beautiful charts and monthly reports that show exactly where your money goes and how your finances trend over time.",
+      icon: "📋"
     },
     { 
       src: screenshot4, 
-      alt: "Debt Management", 
-      title: "Debt Manager",
-      description: "Manage credit cards, loans, and installments with our real-time payoff simulation.",
-      icon: "💳"
+      alt: "List Transaction", 
+      title: "Transactions",
+      description: "Browse, filter, and search your full transaction history with smart categorization done automatically.",
+      icon: "📝"
     },
     { 
       src: screenshot5, 
-      alt: "Portfolio Tracking", 
-      title: "Asset Portfolio",
-      description: "Monitor 28 types of assets including stocks, gold, crypto, property, and cash.",
+      alt: "Budget and Reminder", 
+      title: "Budget & Reminders",
+      description: "Set spending limits with AI recommendations and get smart reminders so you never miss a bill or savings target.",
+      icon: "🔔"
+    },
+    { 
+      src: screenshot6,
+      alt: "Goal Tracker", 
+      title: "Goal Tracker",
+      description: "Save toward milestones with progress tracking and direct asset linking to stay on course.",
+      icon: "🎯"
+    },
+    { 
+      src: screenshot7,
+      alt: "Liabilities List", 
+      title: "Liabilities",
+      description: "Manage credit cards, loans, and installments with real-time payoff simulation and debt tracking.",
+      icon: "💳"
+    },
+    { 
+      src: screenshot8,
+      alt: "Portfolio & Assets", 
+      title: "Portfolio & Assets",
+      description: "Monitor 28 types of assets including stocks, gold, crypto, property, and cash in one unified view.",
       icon: "📈"
     },
     { 
-      src: screenshot6, // Reusing screenshot 6 for now
-      alt: "Smart Budgeting", 
-      title: "Smart Budgeting",
-      description: "Set limits with AI recommendations that learn from your spending habits.",
-      icon: "📊"
+      src: screenshot9,
+      alt: "Language Settings", 
+      title: "Multi-Language",
+      description: "Use Casha in your preferred language. Full localization support so finance feels natural to you.",
+      icon: "🌐"
     },
     { 
-      src: screenshot1, // Reusing screenshot 1 for now
-      alt: "Goal Tracker", 
-      title: "Goal Tracker",
-      description: "Save toward milestones with progress tracking and direct asset linking.",
-      icon: "🎯"
+      src: screenshot10,
+      alt: "Offline Mode", 
+      title: "Offline-First",
+      description: "No internet? No problem. Casha works 100% offline so your finances are always accessible.",
+      icon: "📵"
     }
   ];
 
-  const youtubeVideoId = "pVO5JuFUmlI";
+  const youtubeVideoId = "n9cVSe98Tvs";
   const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1`;
 
   return (
@@ -105,6 +130,21 @@ export default function Hero() {
                   <div className="font-semibold text-lg">App Store</div>
                 </div>
               </a>
+
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.casha.app&hl=id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl flex items-center gap-3 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.18 23.76c.37.21.8.22 1.18.02l12.93-7.46-2.79-2.79-11.32 10.23zM.54 1.07C.2 1.46 0 2.04 0 2.79v18.42c0 .75.2 1.33.55 1.72l.09.08 10.32-10.33v-.24L.63.99.54 1.07zM20.67 10.4l-2.76-1.6-3.11 3.11 3.11 3.11 2.78-1.6c.79-.46.79-1.57-.02-2.02zM4.36.22L17.29 7.68l-2.79 2.79L3.18.24C3.56.04 3.99.05 4.36.22z"/>
+                </svg>
+                <div className="text-left">
+                  <div className="text-xs opacity-90">Get it on</div>
+                  <div className="font-semibold text-lg">Google Play</div>
+                </div>
+              </a>
               
               <button 
                 onClick={() => setIsPlaying(true)}
@@ -136,7 +176,7 @@ export default function Hero() {
           <div id="features" className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                7 Core Capabilities
+                10 Core Capabilities
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Tap any module to see how Casha unifies your finances
