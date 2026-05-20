@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Header from '../components/layout/Header'
+import HeaderWrapper from '../components/layout/HeaderWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased">
-        <Header />
+        <HeaderWrapper />
         <main className="min-h-screen">{children}</main>
       </body>
     </html>
