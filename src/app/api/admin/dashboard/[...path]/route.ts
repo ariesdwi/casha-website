@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { validateSession } from '@/lib/admin-auth'
+import { SESSION_COOKIE } from '@/lib/admin-auth'
 
 const API_BASE = process.env.ADMIN_API_URL ?? ''
+
+function validateRequest(request: NextRequest): boolean {
+  const cookieValue = request.cookies.get(SESSION_COOKIE)?.value
+  if (!cookieValue) return false
+  return cookieValue === process.env.ADMIN_SECRET
+}
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
 ) {
-  if (!(await validateSession())) {
+  if (!validateRequest(request)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

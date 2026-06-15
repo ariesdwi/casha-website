@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { createSession, destroySession } from '@/lib/admin-auth'
+import { SESSION_COOKIE } from '@/lib/admin-auth'
 
 export async function POST(request: Request) {
   try {
@@ -14,14 +14,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
     }
 
-    await createSession()
-    return NextResponse.json({ success: true })
+    const response = NextResponse.json({ success: true })
+    response.cookies.set(SESSION_COOKIE, process.env.ADMIN_SECRET!, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24,
+      path: '/',
+    })
+    return response
   } catch {
     return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   }
 }
 
 export async function DELETE() {
-  await destroySession()
-  return NextResponse.json({ success: true })
+  const response = NextResponse.json({ success: true })
+  response.cookies.set(SESSION_COOKIE, '', { maxAge: 0, path: '/' })
+  return response
 }
